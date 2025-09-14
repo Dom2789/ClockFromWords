@@ -1,0 +1,7 @@
+deskpiIP: 0.0.0.0
+deskpiSendPort: 4081
+deskpiListenPort: 4080
+deskpiTrigger: clock
+url_forcast: http://api.openweathermap.org/data/2.5/forecast?lat=49.6422&lon=12.4952&appid=_______&units=metric&lang=de
+url_weather: http://api.openweathermap.org/data/2.5/weather?lat=49.6422&lon=12.4952&appid=_______&units=metric&lang=de"
+PWDprot: /home/___/prot/
