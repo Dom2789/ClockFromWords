@@ -9,7 +9,7 @@ namespace qlocktwo
 {
     public class DataExchange
     {
-        private readonly string pathConfigFile = "/home/pi/_config/qlocktwo.txt";
+        private readonly string pathConfigFile = "/home/pi/_config/ClockFromWords.txt";
         private static DataExchange _instance;
         private static readonly object _lock = new object();
         public string roomtemperature{ get; set; } = "NoData";
