@@ -11,15 +11,12 @@ namespace qlocktwo
 		private static WeatherAPI apiWeather;
         private static readonly string UrlForecast = DataExchange.instance.UrlForecast;
         private static readonly string UrlWeather = DataExchange.instance.UrlWeather;
+        private static readonly string pathPicture =  DataExchange.instance.pathPicture;
         private static void Main(string[] args)
         {
 
             #region initializing objects
-
-                string currentPath = Environment.CurrentDirectory;
-                Console.WriteLine(currentPath);      
-                //WeatherAPI apiForecast = new WeatherAPI(url_forcast);
-                //apiForecast.call();
+            
                 apiWeather = new WeatherAPI(UrlWeather);
 
                 // Timer initialisieren, der alle 30 Minuten den Wetter-Update-Thread startet
@@ -73,7 +70,7 @@ namespace qlocktwo
 
                     // Anzeige auf Panel
                     map_time = map_panel.GenerateMap(hours, minutes);
-                    panel.Draw(1, map_time, hours, minutes, seconds, dayOfWeek, day, month, year, switchFlag);
+                    panel.Draw(1, map_time, hours, minutes, seconds, dayOfWeek, day, month, year, switchFlag, pathPicture);
 
                     // ca 1 Sekunde warten
                     Thread.Sleep(800);

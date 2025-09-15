@@ -51,9 +51,9 @@ namespace qlocktwo
 
         }
 
-        public void Draw(byte panel,  bool[,] mapping_time, int hours, int minutes, int seconds, DayOfWeek dayOfWeek, int day, int month, int year, bool switchFlag)
+        public void Draw(byte panel,  bool[,] mapping_time, int hours, int minutes, int seconds, DayOfWeek dayOfWeek, int day, int month, int year, bool switchFlag, string pathPicture)
         {
-            var picture = new Picture();
+            var picture = new Picture(pathPicture);
             int offset_panel = 0;
             brightness = SetBrightness(0.75, hours);
              

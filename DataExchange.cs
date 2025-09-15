@@ -22,6 +22,7 @@ namespace qlocktwo
         public string UrlForecast{ get; }
         public string UrlWeather{ get; }
         public string pathProt{ get; }
+        public string pathPicture{ get; }
         // Public property to access the single instance
         public static DataExchange instance
         {
@@ -50,6 +51,7 @@ namespace qlocktwo
             UrlForecast = lines[4].Split(' ')[1];
             UrlWeather = lines[5].Split(' ')[1];
             pathProt = lines[6].Split(' ')[1];
+            pathPicture = lines[7].Split(' ')[1];
         }
     }
 }

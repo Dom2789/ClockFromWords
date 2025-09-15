@@ -13,9 +13,9 @@ namespace qlocktwo
         private int[,][] pixelRbgValues = new int[128, 54][];
 
         // Initialisierung des Arrays pixelRbgValues
-        public Picture()
+        public Picture(string path)
         {            
-            string[] lines = File.ReadAllLines("/home/pi/qlocktwo/py/rbg-array.txt");
+            string[] lines = File.ReadAllLines(path);
             bool first = true;
             int xMax, yMax, x, y, red, green, blue;
 
