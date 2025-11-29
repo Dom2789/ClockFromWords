@@ -292,7 +292,7 @@ namespace qlocktwo
             }
             
             string date = $"{dayString}.{monthString}.{year}";
-            canvas.DrawText(font, 0 + offset, 61, color_not_active, date);
+            canvas.DrawText(font, 0 + offset-4, 61, color_not_active, date);
             return canvas;
         }
 
