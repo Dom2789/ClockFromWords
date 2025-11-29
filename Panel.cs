@@ -278,7 +278,20 @@ namespace qlocktwo
 
         private RGBLedCanvas date(RGBLedCanvas canvas, int offset, int day, int month, int year)
         {
-            string date = $"{day}.{month}.{year}";
+            string dayString = $"{day}";
+            string monthString = $"{month}";
+            
+            if (day < 10)
+            {
+                dayString = $"0{day}";
+            }
+            
+            if (month < 10)
+            {
+                monthString = $"0{month}";
+            }
+            
+            string date = $"{dayString}.{monthString}.{year}";
             canvas.DrawText(font, 0 + offset, 61, color_not_active, date);
             return canvas;
         }
