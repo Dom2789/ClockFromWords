@@ -303,10 +303,21 @@ namespace qlocktwo
                 canvas.DrawText(font, 0 + offset, 61, color_not_active, "No Data");
                 return canvas;
             }
-
-            string indoorTemperature = DataExchange.instance.roomtemperature.Substring(12, 6);
-            string indoorHumidity = DataExchange.instance.roomtemperature.Substring(33,6);
-
+            
+            string indoorTemperature = "";
+            string indoorHumidity = "";
+            
+            try
+            {
+                indoorTemperature = DataExchange.instance.roomtemperature.Substring(12, 6);
+                indoorHumidity = DataExchange.instance.roomtemperature.Substring(33,6);
+            }
+            catch (Exception e)
+            {
+                indoorTemperature = "XX";
+                indoorHumidity = "XX";
+            }
+            
             canvas.DrawText(font, 0 + offset, 61, color_active, $"{indoorTemperature} {indoorHumidity}");
             canvas.DrawText(font, 60 + offset, 61, color_not_active, DataExchange.instance.weather);
 
