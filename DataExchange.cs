@@ -23,6 +23,9 @@ namespace qlocktwo
         public string UrlWeather{ get; }
         public string pathProt{ get; }
         public string pathPicture{ get; }
+        public string brokerIP{ get; }
+        public string topicTemperature{ get; }
+        public bool temperatureOverMQTTorUDP{ get; set; }
         // Public property to access the single instance
         public static DataExchange instance
         {

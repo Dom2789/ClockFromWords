@@ -22,9 +22,18 @@ namespace qlocktwo
                 // Timer initialisieren, der alle 30 Minuten den Wetter-Update-Thread startet
                 Timer weatherUpdateTimer = new Timer(UpdateWeather, apiWeather, TimeSpan.FromSeconds(15), TimeSpan.FromHours(0.5));
 			    
-                // Thread für UDP-Verbindung zu deskpi
-                Thread udpThread = new Thread(UDP.GetTemperature);
-                udpThread.Start();
+                
+                if (DataExchange.instance.temperatureOverMQTTorUDP)
+                {
+                    
+                }
+                else
+                {
+                    // Thread für UDP-Verbindung zu deskpi
+                    Thread udpThread = new Thread(UDP.GetTemperature);
+                    udpThread.Start();   
+                }
+
 
                 DateTime dateTime = new DateTime();
                 DayOfWeek dayOfWeek = new DayOfWeek();
