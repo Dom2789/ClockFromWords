@@ -55,6 +55,25 @@ namespace qlocktwo
             UrlWeather = lines[5].Split(' ')[1];
             pathProt = lines[6].Split(' ')[1];
             pathPicture = lines[7].Split(' ')[1];
+            brokerIP = lines[8].Split(' ')[1];
+            topicTemperature = lines[10].Split(' ')[1];
+            temperatureOverMQTTorUDP = bool.Parse(lines[11].Split(' ')[1]);
+            Console.WriteLine(temperatureOverMQTTorUDP);
+            
         }
+
+        private bool readBooleanParameter(string booleanString)
+        {
+            if (booleanString=="true" || booleanString=="True")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        
+        
     }
 }
