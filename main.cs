@@ -1,4 +1,5 @@
-﻿using RPiRgbLEDMatrix;
+﻿using ClockFromWords;
+using RPiRgbLEDMatrix;
 using weatherapi;
 
 
@@ -25,7 +26,7 @@ namespace qlocktwo
                 
                 if (DataExchange.instance.temperatureOverMQTTorUDP)
                 {
-                    
+                     MQTT.Handle_Received_Application_Message(DataExchange.instance.brokerIP, DataExchange.instance.topicTemperature,MQTT.ParseClimateData);
                 }
                 else
                 {

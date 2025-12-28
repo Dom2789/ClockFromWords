@@ -57,7 +57,7 @@ namespace qlocktwo
             pathPicture = lines[7].Split(' ')[1];
             brokerIP = lines[8].Split(' ')[1];
             topicTemperature = lines[10].Split(' ')[1];
-            temperatureOverMQTTorUDP = bool.Parse(lines[11].Split(' ')[1]);
+            temperatureOverMQTTorUDP = readBooleanParameter(lines[12].Split(' ')[1]);
             Console.WriteLine(temperatureOverMQTTorUDP);
             
         }
