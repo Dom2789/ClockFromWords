@@ -28,6 +28,7 @@ namespace qlocktwo
                 {
                     MQTT MQTTclimate = new MQTT(DataExchange.instance.brokerIP, DataExchange.instance.topicTemperature,MQTT.ParseClimateData);
                      Thread mqttThread = new Thread(MQTTclimate.Handle_Received_Application_Message);
+                     mqttThread.Start();
                 }
                 else
                 {
