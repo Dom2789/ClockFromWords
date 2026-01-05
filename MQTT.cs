@@ -21,7 +21,14 @@ public class MQTT
         this.port = port;
         this.parser = parser;
     }
-    public async void Handle_Received_Application_Message()
+
+    public async void Subscribe()
+    {
+        await this.Handle_Received_Application_Message();
+    }
+    
+    
+    private async Task Handle_Received_Application_Message()
     {
         
         // wait 10s on startup to make sure network is up and running
