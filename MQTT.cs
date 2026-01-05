@@ -5,9 +5,23 @@ using qlocktwo;
 
 namespace ClockFromWords;
 
-public static class MQTT
+public class MQTT
 {
-    public static async Task Handle_Received_Application_Message(string host, string topic, Action<MqttApplicationMessageReceivedEventArgs, bool> parser,int port = 1883)
+    private string host;
+    private int port;
+    private string topic;
+    private Action<MqttApplicationMessageReceivedEventArgs, bool> parser; 
+    
+    //constructor
+    public MQTT(string host, string topic, Action<MqttApplicationMessageReceivedEventArgs, bool> parser,
+        int port = 1883)
+    {
+        this.host = host;
+        this.topic = topic;
+        this.port = port;
+        this.parser = parser;
+    }
+    public async void Handle_Received_Application_Message()
     {
         
         // wait 10s on startup to make sure network is up and running
@@ -40,7 +54,7 @@ public static class MQTT
         
     }
 
-    private static void DumpToConsole(MqttApplicationMessageReceivedEventArgs message)
+    private void DumpToConsole(MqttApplicationMessageReceivedEventArgs message)
     {
         Console.WriteLine("Received application message.");
             
