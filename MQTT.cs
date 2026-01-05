@@ -7,10 +7,10 @@ namespace ClockFromWords;
 
 public class MQTT
 {
-    private string host;
-    private int port;
-    private string topic;
-    private Action<MqttApplicationMessageReceivedEventArgs, bool> parser; 
+    private readonly string host;
+    private readonly int port;
+    private readonly string topic;
+    private readonly Action<MqttApplicationMessageReceivedEventArgs, bool> parser; 
     
     //constructor
     public MQTT(string host, string topic, Action<MqttApplicationMessageReceivedEventArgs, bool> parser,
@@ -21,18 +21,23 @@ public class MQTT
         this.port = port;
         this.parser = parser;
     }
-
-    public async void Subscribe()
-    {
-        await this.Handle_Received_Application_Message();
-    }
     
-    
-    private async Task Handle_Received_Application_Message()
+    public async Task Handle_Received_Application_Message(CancellationToken cancellationToken = default)
     {
+        /*
+         * This is how you use a CancellationToken:
+         * Create a cancellation token source to stop it later
+         * 
+         * var cts = new CancellationTokenSource();
+         * _ = MQTTclimate.Handle_Received_Application_Message(cts.Token);
+         * 
+         * Later, when you want to stop it:
+         * cts.Cancel();
+         * 
+         */
         
         // wait 10s on startup to make sure network is up and running
-        await Task.Delay(10000);
+        await Task.Delay(10000, cancellationToken);
 
         var mqttFactory = new MqttClientFactory();
 
@@ -58,6 +63,16 @@ public class MQTT
         await mqttClient.SubscribeAsync(mqttSubscribeOptions, CancellationToken.None);
 
         Console.WriteLine("MQTT client subscribed to topic.");
+        
+        // Keep the connection alive indefinitely
+        try
+        {
+            await Task.Delay(Timeout.Infinite, cancellationToken);
+        }
+        catch (OperationCanceledException)
+        {
+            Console.WriteLine("MQTT client shutting down...");
+        }
         
     }
 
